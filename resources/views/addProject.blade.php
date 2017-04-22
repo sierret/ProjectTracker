@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Project Upload</title>
 
     <!-- Bootstrap -->
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,12 +18,12 @@
     <![endif]-->
   </head>
   <body>
-    <form class="form-horizontal" id="pupload" action="/store" enctype="multipart/form-data" method="POST">
+    <form class="form-horizontal" id="pupload" action="/store" method="POST">
     
 <fieldset>
 
 <!-- Form Name -->
-<legend>Form Name</legend>
+<legend>Project Data</legend>
 
 <!-- Text input-->
 <div class="form-group">
@@ -79,6 +79,12 @@
     
   </div>
 </div>
+<div disabled="disabled">
+<p><strong>Please compress project files to zip and name this file appropriately before upload</strong></p><br>
+<p><strong>Failure to comply may result in your project being inaccessible</strong></p>
+<label class="col-md-4 control-label" >Project Upload(only zip files)</label>
+  <iframe src="https://app.box.com/embed/s/v87lgj24w43lkv5hgi477xbacp9jpr78?sortColumn=date&view=list&showItemFeedActions=false&showParentPath=false" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe> 
+<div>
 
 <!-- Textarea -->
 <div class="form-group">
@@ -90,12 +96,13 @@
 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}" />
 
 <!-- File Button --> 
-<div class="form-group">
+<!--<div class="form-group">
   <label class="col-md-4 control-label" for="projectfiles">Project Upload</label>
   <div class="col-md-4">
     <input type="file" name="project[]" multiple>
   </div>
 </div>
+-->
 
 <!-- Appended Input-->
 <div class="form-group">
@@ -127,6 +134,7 @@
 </fieldset>
 </form>
 
+ 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

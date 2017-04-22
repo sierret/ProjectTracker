@@ -60,7 +60,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="/home">
+                                        <a href="/admin">
                                             Profile
                                         </a>
                                     </li>
@@ -83,8 +83,18 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->firstname }} <span class="caret"></span>
                                 </a>
-
+                                
                                 <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="/">
+                                            View Projects
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/addProject">
+                                            Add Project
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="/home">
                                             Profile

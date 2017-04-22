@@ -16,7 +16,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('projectId')->unsigned();
             $table->string('projectName');
-            $table->string('upload');
+            $table->string('upload')->default('https://app.box.com/s/v87lgj24w43lkv5hgi477xbacp9jpr78');
             $table->string('coursename');
             $table->string('courseCode'); 
             $table->string('degree');
