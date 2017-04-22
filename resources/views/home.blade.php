@@ -1,8 +1,11 @@
+@extends('layouts.app')
+
+
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-    
+@section('head')
     <!-- Meta Tag -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +14,7 @@
    
     
     
-    <title>Student Project Tracker</title>
+    <title>Profile</title>
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon/favicon.ico">
@@ -22,13 +25,9 @@
     
     <!-- Main CSS Stylesheet -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    
-    <!-- Google Web Fonts  -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">
-     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
      <style>
 body{
-    background-color: #F9F9F9
+    background-color: grey;
 }
 .about{
     font-family: "Times New Roman", Georgia, Serif;
@@ -52,22 +51,14 @@ header{
 
 
      </style>
-
+@endsection
  </head>
 
   <body>
-    
-    
-	
-	<!-- Preloader Start -->
-    <div id="preloader">
-	  <div class="loader"></div>
-    </div>
-    <!-- Preloader End -->
 
     
     
-    <!-- Home & Menu Section Start -->
+     <!--Home & Menu Section Start 
     <header id="home" class="home-section">
         
         <div class="header-top-area">
@@ -76,7 +67,7 @@ header{
                 
                     <div class="col-sm-3">
                         <div class="logo">
-                           <!--put pick here-->
+                           <!--put pick here
                         </div>
                     </div>
                     
@@ -106,8 +97,9 @@ header{
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div>-->
+
+@section('home')
               
          <div class="container">
        
@@ -175,7 +167,7 @@ header{
 <b><i>Email:</i></b> <input type="text" id="mail" value=""></br>
 <b><i>City:</i></b> <input type="text" id="ucity" value=""><br/>
 <b><i>Country:</i></b> <input type="text" id="ucountry" value="">
-
+<b><i>Changed Profile Picture:</i></b> <input type="file" id="file">
 <p>Click the button to save edits</p>
 <button>Save</button>
 </form>
@@ -260,3 +252,4 @@ header{
  
       </body>
  </html>
+ @endsection

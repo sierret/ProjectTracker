@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('degree')->default("-");
-            $table->integer('contact')->nullable();
-            $table->integer('UWI_id')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('UWI_id')->nullable(); //stored as string because of limit on integer size
             $table->string('status')->default("NOT APPROVED");
             $table->rememberToken();
             $table->timestamps();
