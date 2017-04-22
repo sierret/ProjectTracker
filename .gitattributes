@@ -1,3 +1,11 @@
 * text=auto
 *.css linguist-vendored
 *.scss linguist-vendored
+
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
+/vendor
+/.idea
+Homestead.jsonHomestead.yaml
