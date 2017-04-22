@@ -79,10 +79,17 @@
     
   </div>
 </div>
-<div disabled="disabled">
-<p><strong>Please compress project files to zip and name this file appropriately before upload</strong></p><br>
-<p><strong>Failure to comply may result in your project being inaccessible</strong></p>
-<label class="col-md-4 control-label" >Project Upload(only zip files)</label>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="pic">Project Image(for Display)</label>  
+  <div class="col-md-4">
+  <input id="pic" name="pic" type="file">
+    
+  </div>
+</div>
+
+<div disabled="disabled" class="form-group">
+<label class="col-md-4 control-label" >Project Upload(only zip files)<br><br><hr>Please compress project files to zip and name this file appropriately before upload<br>Failure to comply may result in your project being inaccessible<hr></label>
   <iframe src="https://app.box.com/embed/s/v87lgj24w43lkv5hgi477xbacp9jpr78?sortColumn=date&view=list&showItemFeedActions=false&showParentPath=false" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe> 
 <div>
 

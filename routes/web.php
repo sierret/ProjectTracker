@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/profile', 'ProfileController@index');
 Route::post('/addProject', 'addProject@store');
 Route::get('/addProject', 'addProject@show');
 Route::prefix('admin')->group(function(){

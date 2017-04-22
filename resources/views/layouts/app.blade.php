@@ -7,12 +7,11 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-@yield('head')
+
     <title>{{ config('app.name', 'Project Tracker') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -121,8 +120,6 @@
         </nav>
 
         @yield('content')
-        
-        @yield('home')
     </div>
 
 

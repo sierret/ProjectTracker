@@ -1,11 +1,8 @@
-@extends('layouts.app')
-
-
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-@section('head')
+    
     <!-- Meta Tag -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +11,7 @@
    
     
     
-    <title>Profile</title>
+    <title>Student Project Tracker</title>
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon/favicon.ico">
@@ -25,6 +22,10 @@
     
     <!-- Main CSS Stylesheet -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <!-- Google Web Fonts  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
      <style>
 body{
     background-color: grey;
@@ -51,23 +52,25 @@ header{
 
 
      </style>
-@endsection
+
  </head>
 
   <body>
 
     
     
-     <!--Home & Menu Section Start 
+    <!-- Home & Menu Section Start -->
     <header id="home" class="home-section">
         
         <div class="header-top-area">
             <div class="container">
                 <div class="row">
+                <div id="username">
                 
+                </div>
                     <div class="col-sm-3">
                         <div class="logo">
-                           <!--put pick here
+                           <!--put pick here-->
                         </div>
                     </div>
                     
@@ -84,12 +87,52 @@ header{
                                 </div>
                                 <div class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li class="active"><a class="smoth-scroll" href="index.html">Home <div class="ripple-wrapper"></div></a>
+                                        <li class="active"><a class="smoth-scroll" href="/">Home <div class="ripple-wrapper"></div></a>
                                         </li>
-                                        <li><a class="smoth-scroll" href="#about">Logout</a>
+                                        <li><a class="smoth-scroll" href="/addProject">Add Project</a>
                                         </li>                                     
-                                       
-                                       
+                                        
+                                
+                                             @if(Auth::check())
+                                                <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                    {{ Auth::user()->firstname }} <span class="caret"></span>
+                                                </a>
+
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li style="color:black; background-color:#24b662">
+                                                        <a href="/home">
+                                                            Profile
+                                                        </a>
+
+                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                            {{ csrf_field() }}
+                                                        </form>
+                                                    </li>
+                                                    <li style="color:black; background-color:#24b662">
+                                                        <a href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                            Logout
+                                                        </a>
+
+                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                            {{ csrf_field() }}
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            
+                                            @else
+                                                <li><a class="smoth-scroll" href="{{ route('login') }}">Login</a>
+                                                </li>;
+                                                <li><a class="smoth-scroll" href="{{ route('register') }}">Signup</a>
+                                                </li>;
+                                                
+                                            
+                                            @endif
+                                        
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -97,9 +140,8 @@ header{
                     </div>
                 </div>
             </div>
-        </div>-->
-
-@section('home')
+        </div>
+        
               
          <div class="container">
        
@@ -252,4 +294,3 @@ header{
  
       </body>
  </html>
- @endsection

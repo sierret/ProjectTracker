@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li class="active"><a class="smoth-scroll" href="#home">Home <div class="ripple-wrapper"></div></a>
+                                        <li class="active"><a class="smoth-scroll" href="/">Home <div class="ripple-wrapper"></div></a>
                                         </li>
                                         <li><a class="smoth-scroll" href="#about">About</a>
                                         </li>                                     
@@ -83,7 +83,7 @@
 
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li style="color:black; background-color:#24b662">
-                                                        <a href="/home">
+                                                        <a href="/profile">
                                                             Profile
                                                         </a>
 
