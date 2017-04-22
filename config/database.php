@@ -67,6 +67,17 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'heroku' => [  
+            'driver'   => 'pgsql',
+            'host'     => 'ec2-54-225-182-108.compute-1.amazonaws.com',
+            'database' => 'd9a8nl8p4jm2a6',
+            'username' => 'dwncgszxzqpgvx',
+            'password' => '6a76f746d140ef332f22d9d6bc059fe02429e76e47198ae5d6897a5fbc27dfb8',
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+        ],
+
     ],
 
     /*
