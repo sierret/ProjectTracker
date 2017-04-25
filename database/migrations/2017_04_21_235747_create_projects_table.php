@@ -16,7 +16,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('projectId')->unsigned();
             $table->string('projectName');
-            $table->string('pic')->nullable();
+            $table->string('pic')->default("images/project4.jpg");
             $table->string('coursename');
             $table->string('courseCode'); 
             $table->string('degree');

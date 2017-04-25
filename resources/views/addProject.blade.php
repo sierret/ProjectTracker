@@ -125,16 +125,16 @@ header{
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="pic">Project Image(for Display)</label>  
+  <label class="col-md-4 control-label" for="pic">Project Image (Link On External Website)</label>  
   <div class="col-md-4">
-  <input id="pic" name="pic" type="file">
+  <input id="pic" name="pic" type="text">
     
   </div>
 </div>
 
 <div disabled="disabled" class="form-group">
-<label class="col-md-4 control-label" >Upload Project At This Link(Compress files to zip before upload. Only ZIP files accepted)</label>
-    <hr><a target="_blank" href="https://www.cloudwok.com/u/GyOx">Upload Here</a><hr>
+<label class="col-md-4 control-label" >Upload Project At This Link(Compress files to zip before upload. Only ZIP files accepted). Please Upload Here Before Submitting Form</label>
+    <hr><a target="_blank" href="https://www.cloudwok.com/u/GyOx" onclick="upload()">Click Here for Upload</a><hr>
 
 <div>
 
@@ -173,7 +173,7 @@ header{
   </div>
 </div>
 
-<div class="form-group">
+<div class="form-group" style="display:none" id="btn">
   <label class="col-md-4 control-label" for="submit">Upload</label>
   <div class="col-md-4">
     <input type="submit" value="Save">
@@ -218,6 +218,12 @@ header{
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script>
+    function upload(){
+    var btn= document.getElementById("btn");
+        btn.style.display = "block";
+    }
+    </script>
 
     
 @endsection
