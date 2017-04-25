@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('email')->unique();
             $table->string('password');
-            $table->binary('pic')->nullable();
+            $table->string('pic')->nullable();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('degree')->default("-");

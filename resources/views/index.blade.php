@@ -83,6 +83,7 @@
 
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li style="color:black; background-color:#24b662">
+                                                    <a href="/addProject">Add Project</a>
                                                         <a href="/profile">
                                                             Profile
                                                         </a>
@@ -192,9 +193,10 @@
             <div class="row">
                 <ul class="portfolio">
                     <li class="filter" data-filter="all">all</li>
-                    <li class="filter" data-filter=".course1">Web Systems</li>
-                    <li class="filter" data-filter=".course2">Data Structures</li>
-                    <li class="filter" data-filter=".course3">Databases</li>
+                @foreach($data['courses'] as $course)
+                
+                    <li class="filter" data-filter=".course{{$course->id}}">{{$course->coursename}}</li>
+                @endforeach
                 </ul>
             </div>
             
@@ -203,26 +205,35 @@
             <div class="portfolio-inner">
                 <div class="row">
                 <!--model 1 -->
-                    <div width="50px" class="col-md-4 col-sm-6 col-xs-12 mix course1"  >
-                         <img src="images/project1.jpg" alt="Projects"  >
-                        <div align="center" style="color:#24b662" > <button onclick="document.getElementById('id01').style.display='block'" class="w3-button "><b>UWI Sports</b></button></div>
-
+                 @foreach($data['courses'] as $course)
+                @foreach($data['projects'] as $project)
+                    @if ($course->coursename == $project->coursename)
+                    <div width="50px" class="col-md-4 col-sm-6 col-xs-12 mix course{{$course->id}}"  >
+                        <div align="center" style="color:#24b662" > <button onclick="document.getElementById('id01').style.display='block'" class="w3-button ">{{$project->projectName}}</button></div>
                       <div id="id01" class="w3-modal">
                        <div class="w3-modal-content w3-card-4">
                         <header class="w3-container w3-black"> 
                        <span onclick="document.getElementById('id01').style.display='none'" 
                           class="w3-button w3-display-topright">&times;</span>
-                         <h2>CSS Game</h2>
+                         <h2>{{$project->projectName}}</h2>
                            </header>
                           <div class="w3-container">
-                      <p>Course Code:<br/> </p>
-                       <p>Project Description:<br/> </p>
-                      <p>Group members:<br/>
-                       <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;">  Mark Johnson<br/>
-                      <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Debra Smith<br/>
-                       <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Kyle Johnson<br/>
-                       <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Sasha White<br/>
-          
+                      <p>Course Code:<br/>{{$project->courseCode}} </p>
+                       <p>Project Description:<br/>{{$project->description}} </p>
+                      <p>Group members:{{$project->groupMembers}}<br/>
+                      <?php
+                        $members = explode(' ',$project->groupMembers );
+                      ?>
+                       @foreach(explode(' ', $project->groupMembers) as $member)
+                      @foreach($data['users'] as $user)
+                      @if ($user->email === $member)
+                       <img src="{{$user->pic}}" alt="Student image" style="width:120px;height:120px;"> {{$user->firstname." ".$user->lastname}}<br/>
+                       @else
+                       <img src="images/profile_default.jpg" alt="Student image" style="width:120px;height:120px;"> {{$member}}<br/>
+                       @break
+                       @endif
+                       @endforeach
+                       @endforeach
                          </p>
                         </div>
                        <footer class="w3-container w3-black">
@@ -232,98 +243,42 @@
   
                         
                     </div>
-                
-                    <!--model2-->
-                    <div class="col-md-4 col-sm-6 col-xs-12 mix course1">
-                         <img src="images/project2.jpg" alt="">
-                     <div align="center" style="color:#24b662" >  <button onclick="document.getElementById('id02').style.display='block'" class="w3-button"><b>Web App Helper</b></button></div>
-
-  <div id="id02" class="w3-modal">
-    <div class="w3-modal-content w3-card-4">
-      <header class="w3-container w3-black"> 
-        <span onclick="document.getElementById('id02').style.display='none'" 
-        class="w3-button w3-display-topright">&times;</span>
-        <h2>New Gadgets</h2>
-      </header>
-      <div class="w3-container">
-         <p>Course Code:<br/> </p>
-                       <p>Project Description:<br/> </p>
-                      <p>Group members:<br/>
-                       <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;">  Barry Allen<br/>
-                      <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Iris West<br/>
-                       <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Wally Knight<br/>
-                       <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Mark Nana<br/>
-          
-                         </p>
-      </div>
-      <footer class="w3-container w3-black">
-      </footer>
-    </div>
-  </div> 
-</div>
-                    <!--model3-->
-                    <div class="col-md-4 col-sm-6 col-xs-12 mix course2">
-                         <img src="images/project3.jpg" alt="">
-                       <div align="center" style="color:#24b662"> <button onclick="document.getElementById('id03').style.display='block'" class="w3-button "><b> UWI Social </b></button></div>
-
-  <div id="id03" class="w3-modal">
-    <div class="w3-modal-content w3-card-4">
-      <header class="w3-container w3-black"> 
-        <span onclick="document.getElementById('id03').style.display='none'" 
-        class="w3-button w3-display-topright">&times;</span>
-        <h2>Build A Bot</h2>
-      </header>
-      <div class="w3-container">
-       <p>Course Code:<br/> </p>
-                        <p>Project Description:<br/> </p>
-                          <p>Group members:<br/>
-                       <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;">  Johnathon Johnson<br/>
-                      <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Anna Adams<br/>
-                      <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Dayna Blackman<br/>
-                      <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Sofia Love<br/>
-          
-                      </p>
-      </div>
-      <footer class="w3-container w3-black">
-      </footer>
-    </div>
-  </div> 
-                    </div>
-                    <!--model4-->
-                    <div class="col-md-4 col-sm-6 col-xs-12 mix course3">
-                         <img src="images/project4.jpg" alt="">
-                        <div align="center" style="color:#24b662"> <button onclick="document.getElementById('id04').style.display='block'" class="w3-button "><b>UWICS Official</b></button></div>
-
-                        <div id="id04" class="w3-modal">
-                       <div class="w3-modal-content w3-card-4">
-                       <header class="w3-container w3-black"> 
-                       <span onclick="document.getElementById('id04').style.display='none'" 
-                          class="w3-button w3-display-topright">&times;</span>
-                            <h2>Store Finder</h2>
-                         </header>
-                          <div class="w3-container">
-                          <p>Course Code:<br/> </p>
-                        <p>Project Description:<br/> </p>
-                          <p>Group members:<br/>
-                       <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;">  Camille Curry<br/>
-                      <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Gregory Persad<br/>
-                      <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Kayla Brathwaite<br/>
-                      <img src="images/pic2.jpg" alt="Student image" style="width:120px;height:120px;"> Hannah Spencer<br/>
-          
-                      </p>
-                     </div>
-                    <footer class="w3-container w3-black">
-                   </footer>
-                    </div>
-                    </div>
-                    </div>
+                    @endif
                     
-                </div>
+                    @endforeach
+                    @endforeach
+              
+                    
             </div>
             
-        </div>
+        </div> 
+        <br><br><hr>
+        @if (Auth::check())
+        <div class="form-group">
+  <div class="col-md-4">
+    <input type="hidden" id="userstatus" value="{{Auth::user()->status}}">
+  </div>
+</div>
+@else
+       <div class="form-group">
+  <div class="col-md-4">
+    <input type="hidden" id="userstatus" value="NOT APPROVED">
+  </div>
+</div>
+@endif
+        <div class="form-group">
+  <label class="col-md-4 control-label" for="showProjects">Show Uploaded Project Files</label>
+  <div class="col-md-4">
+    <button id="showProjects" onclick="showProjects()" class="btn btn-primary">Display!</button>
+  </div>
+</div>
         
-        <div class="text-center margin-top-50">
+           <div id="show" style="align:center; display:none">
+        <label style="clear:right; align:center">All Project Files</label><br>
+          <iframe src="https://app.box.com/embed/s/v87lgj24w43lkv5hgi477xbacp9jpr78" width="800" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+          </div>
+   
+        <div class="text-center margin-top-50" style="clear:both">
           <a class="button button-style button-style-dark button-style-icon fa fa-long-arrow-right smoth-scroll" href="#contact">Let's Discuss</a>
             </div>
      
@@ -333,42 +288,7 @@
     
     
      <!-- Start -->
-     <section id="gdisplay" class="gdisplay-section section-space-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="section-title">
-                        <h2>Top Projects.</h2>
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="gdisplay-carousel-list margin-top-20">
-                
-                    <div class="gdisplay-word text-center">
-                    <img src="images/project4.jpg" class="img-responsive" alt="">
-                        <h2>Class Recorder</h2>
-                        <p>Course code.</p>
-                    </div>
-                    
-                    <div class="gdisplay-word text-center">
-                    <img src="images/project2.jpg" class="img-responsive" alt="">
-                        <h2>Project2 Name</h2>
-                        <p>Course Code</p>
-                    </div>
-                    
-                    <div class="gdisplay-word text-center">
-                    <img src="images/project3.jpg" class="img-responsive" alt="">
-                        <h2>Project 3 </h2>
-                        <p>Course Code.</p>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
+     
     <!-- End -->
     
     
@@ -444,14 +364,14 @@
                <div class="col-md-4 col-sm-4">
                 <div class="contact-us-detail">  
                  <i class="fa fa-mobile color-6"></i>
-                  <p><a href="tel:+1234567890">+1234 567 890</a></p>
+                  <p><a href="tel:+18687567890">+1868 756 7890</a></p>
                  </div>
                 </div>
                
                <div class="col-md-4 col-sm-4">
                 <div class="contact-us-detail">
                  <i class="fa fa-mail-reply color-5"></i>
-                  <p><a href="mailto:name@domain.com">name@domain.com</a></p>
+                  <p><a href="mailto:stephan.pierre@sta.uwi.edu">stephan.pierre@sta.uwi.edu</a></p>
                  </div>
                 </div>
                  
@@ -471,17 +391,18 @@
            <div class="col-md-6">   
                  
                <div class="row">
-                  <form>
+                  <form method="post" action="/message">
+                  {{csrf_field()}}
                     
 					  <div class="col-sm-6">
 						<div class="form-group">
-						  <input type="text" id="name" class="form-control" placeholder="Your Name">
+						  <input type="text" name="name" id="name" class="form-control" placeholder="Your Name">
 						 </div>
                         </div>
 								
                        <div class="col-sm-6">
 					    <div class="form-group">
-						 <input type="email" id="email" class="form-control" placeholder="Your Email">
+						 <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
 						 </div>
                         </div>
                         
@@ -489,7 +410,7 @@
                           
                         <div class="col-sm-6">
 						  <div class="form-group">
-							<input type="text" id="address" class="form-control" placeholder="Where are You From?">
+							<input type="text" id="country" name="country" class="form-control" placeholder="Where are You From?">
 						   </div>
                           </div>
 								
@@ -497,13 +418,13 @@
 								
                        <div class="col-sm-12">
 					    <div class="textarea-message form-group">
-					      <textarea id="message" class="textarea-message form-control" placeholder="Your Message" rows="5"></textarea>
+					      <textarea id="message" name="message" class="textarea-message form-control" placeholder="Your Message" rows="5"></textarea>
 						  </div>
                          </div>
                    
                    
                     <div class="text-center">      
-		   <button type="submit" class="button button-style button-style-dark button-style-icon fa fa-long-arrow-right text-center">Submit</button>
+		   <button type="submit" class="button button-style button-style-dark button-style-icon fa fa-long-arrow-right text-center" onclick="messagesend()">Submit</button>
 	                  </div>
                        
                   </form>
@@ -581,29 +502,19 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
-var modal1 = document.getElementById('id02');
-
-window.onclick = function(event) {
-    if (event.target == modal1) {
-        modal1.style.display = "none";
+function messagesend(){
+    alert("Message Submitted");
+}
+function showProjects(){
+    svalue = document.getElementById('userstatus').value; 
+    var pjts= document.getElementById("show");
+    if (svalue == "APPROVED"){
+        pjts.style.display = "block";
+    }
+    else{
+        alert("You are not approved to access project files");
     }
 }
-
-var modal2 = document.getElementById('id03');
-window.onclick = function(event) {
-    if (event.target == modal2) {
-        modal2.style.display = "none";
-    }
-}
-
-var modal3 = document.getElementById('id04');
-window.onclick = function(event) {
-    if (event.target == modal3) {
-        modal3.style.display = "none";
-    }
-}
-
 </script>
 
 

@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Project Tracker') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
@@ -95,7 +96,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/home">
+                                        <a href="/profile">
                                             Profile
                                         </a>
                                     </li>

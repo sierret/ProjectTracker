@@ -89,8 +89,7 @@ header{
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a class="smoth-scroll" href="/">Home <div class="ripple-wrapper"></div></a>
                                         </li>
-                                        <li><a class="smoth-scroll" href="/addProject">Add Project</a>
-                                        </li>                                     
+                                                                            
                                         
                                 
                                              @if(Auth::check())
@@ -101,7 +100,8 @@ header{
 
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li style="color:black; background-color:#24b662">
-                                                        <a href="/home">
+                                                    <a href="/addProject">Add Project</a>
+                                                        <a href="/profile">
                                                             Profile
                                                         </a>
 
@@ -156,22 +156,22 @@ header{
   <div class="panel widget light-widget panel-bd-top">
                   <div class="panel-heading no-title"> </div>
                   <div class="panel-body">
-                    <div class="text-center vd_info-parent"> <img alt="example image" src="images/pic1.jpg"> </div>
-                  
-                    <h2 class="font-semibold mgbt-xs-5">Mark Johnson</h2><br/>
-                    <h4>University of the West Indies.</h4><br/>
-                    <p>Degree:Information Technology</p>
+
+                    <div class="text-center vd_info-parent"> <img alt="example image" src="{{Auth::user()->pic}}"> </div>
+                    <h2 class="font-semibold mgbt-xs-5">{{Auth::user()->firstname}}</h2><br/>
+                       <h2 class="font-semibold mgbt-xs-5">{{Auth::user()->lastname}}</h2><br/>
+                    <p>{{Auth::user()->degree}}</p>
                     <div class="mgtp-20">
                       <table class="table table-striped table-hover">
                         <tbody>
                           <tr>
                             <td style="width:60%;">Status</td>
-                            <td><span class="label label-success">Approved</span></td>
+                            <td><span class="label label-success">{{Auth::user()->status}}</span></td>
                           </tr>
                         
                           <tr>
                             <td>Date Joined</td>
-                            <td> April 19, 2017 </td>
+                            <td> {{Auth::user()->created_at}} </td>
                           </tr>
                         </tbody>
                       </table>
@@ -202,16 +202,16 @@ header{
           <h4 class="modal-title"><b><u>Edit About Information</u></b></h4>
         </div>
 
- <form method="post" class="modal-body">
-
-<b><i> First Name:</i></b> <input type="text" id="first" value=""> <br/>
-<b><i>Last Name:</i></b> <input type="text" id="last" value=""><br/>
-<b><i>Email:</i></b> <input type="text" id="mail" value=""></br>
-<b><i>City:</i></b> <input type="text" id="ucity" value=""><br/>
-<b><i>Country:</i></b> <input type="text" id="ucountry" value="">
-<b><i>Changed Profile Picture:</i></b> <input type="file" id="file">
+ <form method="POST" action="{{route('update.profile')}}" class="table table-hover">
+<input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}">
+<input type="hidden" name="id" id="id" value="{{Auth::user()->id}}">
+<b><i> First Name:</i></b> <input type="text" name="firstname" value=""> <br/>
+<b><i>Last Name:</i></b> <input type="text" name="lastname" value=""><br/>
+<b><i>Email:</i></b> <input type="text" name="email" value=""></br>
+<b><i>Contact:</i></b> <input type="text" name="contact" value=""><br/>
+<b><i>Change Profile Picture(add link to online picture such as Facebook):</i></b> <input type="text" id="pic" value="images/profile_default.jpg" name="pic">
 <p>Click the button to save edits</p>
-<button>Save</button>
+<button type="submit" class="btn btn-primary">Make Changes</button>
 </form>
 
 
@@ -225,31 +225,25 @@ header{
   </div>
    <!--end model form-->
 
-      <table>
+      <table class="table table-hover">
           <tr>
-              <td>First Name:<p id="fname"></p></td> <!--this is wat is didplayed on the screen-->
-              <td>Last Name:<p id="lname"></p></td>
-          </tr>
-           <tr>
-              <td>User Name:<p id="uname"></p></td>
-              <td>Email:<p id="email"></p></td>
-          </tr>
-          <tr>
-              <td>City:<p id="city"></p></td>
-              <td>Country:<p id="country"></p></td>
-          </tr>
-          
-           
-          
+                <th>ID</th>                              
+                <th>First Name </th>
+                <th>Last Name</th>
+                <th>UWI ID</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Status</th>
+          </tr>         
+       </thead>
+        <tbody>
+        <tr>
+                <td>{{Auth::user()->id}}</td><td>{{Auth::user()->firstname}}</td><td>{{Auth::user()->lastname}}</td><td>{{Auth::user()->UWI_id}}</td><td>{{Auth::user()->email}}</td><td>{{Auth::user()->contact}}</td><td>{{Auth::user()->status}}</td>
+            </tr>    
+   
+        </tbody>
       </table>
-      
-    
-
- 
-
-
-
-       
+            
             </div><!--row-->
         
         </div><!--container-->

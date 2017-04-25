@@ -15,12 +15,15 @@ class addProject extends Controller
         $project->courseCode = Input::get("coursecode");
         $project->coursename = Input::get("coursename");
         $project->year = Input::get("year");
+        $project->pic = Input::file('pic');
         $project->degree = Input::get("degree");
         $project->github = Input::get("github");
         $project->groupMembers = Input::get("emails");
         $project->upload = Input::get("upload");
         $project->description = Input::get("description");
         $project->save();
+
+        return redirect('/');
     }
 
     public function show(){

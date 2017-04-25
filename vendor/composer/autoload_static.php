@@ -82,6 +82,9 @@ class ComposerStaticInit5fa90836035682577dbeb6fff2d9b198
         array (
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Cache\\' => 22,
+            'Doctrine\\Common\\Annotations\\' => 28,
+            'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
         ),
         'C' => 
@@ -214,6 +217,18 @@ class ComposerStaticInit5fa90836035682577dbeb6fff2d9b198
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'Doctrine\\Common\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
+        ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
+        ),
+        'Doctrine\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
+        ),
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
@@ -264,9 +279,21 @@ class ComposerStaticInit5fa90836035682577dbeb6fff2d9b198
         ),
         'D' => 
         array (
+            'Doctrine\\DBAL\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/dbal/lib',
+            ),
+            'Doctrine\\Common\\Lexer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
+            ),
             'Doctrine\\Common\\Inflector\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
+            ),
+            'Doctrine\\Common\\Collections\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
         ),
         'C' => 
@@ -281,10 +308,11 @@ class ComposerStaticInit5fa90836035682577dbeb6fff2d9b198
     public static $classMap = array (
         'AdminTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_20_151915_create_admins_table.php',
+        'CreateContactTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_162359_create_contact_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProjectsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_235747_create_projects_table.php',
         'CreateStudentprojectsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_22_000820_create_studentprojects_table.php',
-        'CreateTableGroupMembers' => __DIR__ . '/../..' . '/database/migrations/2017_04_22_181356_create_table_groupMembers.php',
+        'CreateTableCourses' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_215810_create_table_courses.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -818,6 +846,7 @@ class ComposerStaticInit5fa90836035682577dbeb6fff2d9b198
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

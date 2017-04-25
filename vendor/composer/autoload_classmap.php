@@ -8,10 +8,11 @@ $baseDir = dirname($vendorDir);
 return array(
     'AdminTableSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'CreateAdminsTable' => $baseDir . '/database/migrations/2017_04_20_151915_create_admins_table.php',
+    'CreateContactTable' => $baseDir . '/database/migrations/2017_04_24_162359_create_contact_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateProjectsTable' => $baseDir . '/database/migrations/2017_04_21_235747_create_projects_table.php',
     'CreateStudentprojectsTable' => $baseDir . '/database/migrations/2017_04_22_000820_create_studentprojects_table.php',
-    'CreateTableGroupMembers' => $baseDir . '/database/migrations/2017_04_22_181356_create_table_groupMembers.php',
+    'CreateTableCourses' => $baseDir . '/database/migrations/2017_04_24_215810_create_table_courses.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -545,4 +546,5 @@ return array(
     'SebastianBergmann\\ResourceOperations\\ResourceOperations' => $vendorDir . '/sebastian/resource-operations/src/ResourceOperations.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UserTableSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
 );

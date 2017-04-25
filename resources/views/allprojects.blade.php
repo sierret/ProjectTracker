@@ -21,7 +21,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Options  <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{route('admin.dashboard')}}">Go to Home</a></li>
-            <li><a href="{{route('admin.projects')}}">View All Projects</a></li>
+            <li><a href="#">View All Projects</a></li>
             <li><a href="{{route('admin.register')}}">Add a Administrator</a></li>
             <li class="divider"></li>
             <li><a href="{{route('admin.view')}}">View All Administrator </a></li>
@@ -45,47 +45,36 @@
 <br>
 <br>
 <div class="container">
-    <center> <h1> All Students </h1>  </center>
+    <center> <h1> All Projects </h1>  </center>
      <table class="table table-hover">
         <thead>
             <tr>
                 <th>ID</th>                              
-                <th>First Name </th>
-                <th>Last Name</th>
-                <th>UWI ID</th>
-                <th>Email</th>
+                <th>Project Name </th>
+                <th>Course Name</th>
+                <th>Course Code</th>
                 <th>Degree</th>
-                <th>Contact</th>
-                <th>Status</th>
+                <th>Year</th>
+                <th>Github</th>
+                <th>Description</th>
+                <th>Group Members</th>
+                <th>Created</th>
+                
             </tr>
         </thead>
         <tbody>   
-     @foreach ($students as $student)
+     @foreach ($projects as $project)
       <tr>
-                <td>{{$student->id}}</td><td>{{$student->firstname}}</td><td>{{$student->lastname}}</td><td>{{$student->UWI_id}}</td><td>{{$student->email}}</td><td>{{$student->degree}}</td><td>{{$student->contact}}</td><td>{{$student->status}}</td>
-            </tr>    
-    @endforeach
-        </tbody>
-    </table>
-</div>
-
-<br>
-<br>
-<div class="container">
-    <center> <h1> Messages</h1>  </center>
-     <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Name</th>                              
-                <th>Email </th>
-                <th>Country</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>   
-     @foreach ($messages as $message)
-      <tr>
-                <td>{{$message->id}}</td><td>{{$message->name}}</td><td>{{$message->country}}</td><td>{{$message->email}}</td><td>{{$message->message}}</td>
+                <td>{{$project->projectId}}</td>
+                <td>{{$project->projectName}}</td>
+                <td>{{$project->coursename}}</td>
+                <td>{{$project->courseCode}}</td>
+                <td>{{$project->degree}}</td>
+                <td>{{$project->year}}</td>
+                <td>{{$project->github}}</td>
+                <td>{{$project->description}}</td>
+                <td>{{$project->groupMembers}}</td>
+                <td>{{$project->created_at}}</td>
             </tr>    
     @endforeach
         </tbody>

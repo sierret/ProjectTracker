@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +12,45 @@
 
     <!-- Bootstrap -->
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/x-icon" href="images/favicon/apple-touch-icon.png">
+    
+    <!-- All CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="css/plugin.css">
+    
+    <!-- Main CSS Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <!-- Google Web Fonts  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+     <style>
+body{
+    background-color: #ccccff;
+}
+.about{
+    font-family: "Times New Roman", Georgia, Serif;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover{background-color:#f5f5f5}
+
+header{
+     overflow:auto;
+}
+
+
+     </style>
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,7 +60,9 @@
     <![endif]-->
   </head>
   <body>
-    <form class="form-horizontal" id="pupload" action="/store" method="POST">
+  
+        <div class="container">
+    <form class="form-horizontal" action="/addProject" method="POST" enctype="multipart/form-data">
     
 <fieldset>
 
@@ -29,7 +73,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="pname">Project Name</label>  
   <div class="col-md-4">
-  <input id="pname" name="pname" placeholder="Name" class="form-control input-md" type="text">
+  <input id="pname" name="pname" placeholder="Name" class="form-control input-md" type="text" required>
     
   </div>
 </div>
@@ -38,7 +82,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="coursename">Course Name</label>  
   <div class="col-md-4">
-  <input id="coursename" name="coursename" placeholder="INFO 2500" class="form-control input-md" type="text">
+  <input id="coursename" name="coursename" placeholder="INFO 2500" class="form-control input-md" type="text" required>
     
   </div>
 </div>
@@ -47,7 +91,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="coursecode">Course Code</label>  
   <div class="col-md-4">
-  <input id="coursecode" name="coursecode" placeholder="XXXX 1234" class="form-control input-md" type="text">
+  <input id="coursecode" name="coursecode" placeholder="XXXX 1234" class="form-control input-md" type="text" required>
   <span class="help-block">Format: 4 letters followed by 4 digits</span>  
   </div>
 </div>
@@ -58,7 +102,7 @@
   <div class="col-md-4">
   <div class="radio">
     <label for="degree-0">
-      <input name="degree" id="degree-0" value="Information Technology" checked="checked" type="radio">
+      <input name="degree" id="degree-0" value="Information Technology" checked="checked" type="radio" required>
       Information Technology
     </label>
 	</div>
@@ -75,7 +119,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="year">Year</label>  
   <div class="col-md-4">
-  <input id="year" name="year" placeholder="YYYY" class="form-control input-md" type="text">
+  <input id="year" name="year" placeholder="YYYY" class="form-control input-md" type="text" required>
     
   </div>
 </div>
@@ -89,15 +133,16 @@
 </div>
 
 <div disabled="disabled" class="form-group">
-<label class="col-md-4 control-label" >Project Upload(only zip files)<br><br><hr>Please compress project files to zip and name this file appropriately before upload<br>Failure to comply may result in your project being inaccessible<hr></label>
-  <iframe src="https://app.box.com/embed/s/v87lgj24w43lkv5hgi477xbacp9jpr78?sortColumn=date&view=list&showItemFeedActions=false&showParentPath=false" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe> 
+<label class="col-md-4 control-label" >Upload Project At This Link(Compress files to zip before upload. Only ZIP files accepted)</label>
+    <hr><a target="_blank" href="https://www.cloudwok.com/u/GyOx">Upload Here</a><hr>
+
 <div>
 
 <!-- Textarea -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="description">Project Description</label>
   <div class="col-md-4">                     
-    <textarea class="form-control" id="description" name="description"></textarea>
+    <textarea class="form-control" id="description" name="description"></textarea required>
   </div>
 </div>
 <input type="hidden" name="_token" id="csrf-token" value="{{csrf_token()}}" />
@@ -113,13 +158,10 @@
 
 <!-- Appended Input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="appendedtext">Group Members Emails</label>
+  <label class="col-md-4 control-label" for="emails">Group Members Emails</label>  
   <div class="col-md-4">
-    <div class="input-group">
-      <input id="appendedtext" name="emails" class="form-control" placeholder="bob@gmail.com" type="text">
-      <span class="input-group-addon">add</span>
-    </div>
-    <p class="help-block">Enter member email and click add button. Repeat for each member.</p>
+  <input id="emails" name="emails" placeholder="bob@bobmail.com kid@miniman.com buffguy@gymrat.com" class="form-control input-md" type="text" >
+  <span class="help-block">Enter member email and click add button. Repeat for each member.</span>  
   </div>
 </div>
 
@@ -138,15 +180,44 @@
   </div>
 </div>
 
+
+
 </fieldset>
 </form>
+</header>
+</div>
+   <footer class="footer-section" style="background-color:#ccccff">
+        <div class="container" >
+            <div class="row">
+               
+      
+               
+            <div class="col-md-4 text-center">
+               <p>Please enter information as accurately as possible<br>UWI Student Project Tracker©<br> Copyright 2017 .</p>
+               </div>
+              
+             
+                
+             </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    
+    
+    <!-- Back to Top Start -->
+    <a href="#" class="scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
- 
+      <!-- All Javascript Plugins  -->
+   
+    <script type="text/javascript" src="js/plugin.js"></script>
+    
+    <!-- Main Javascript File  -->
+    <script type="text/javascript" src="js/scripts.js"></script>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
     
-  </body>
-</html>
+@endsection

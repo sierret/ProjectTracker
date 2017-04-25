@@ -10,18 +10,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Admin DashBoard</a>
+      <a class="navbar-brand" href="/admin">Admin DashBoard</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{{route('admin.dashboard')}}">View Students <span class="sr-only">(current)</span></a></li>
-        <li><a href="{{route('admin.view.approve')}}">Approve Students</a></li>
+        <li><a href="#">Approve Students</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Options  <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{route('admin.dashboard')}}">Go to Home</a></li>
-            <li><a href="{{route('admin.projects')}}">View All Projects</a></li>
+            <li><a href="#">View All Projects</a></li>
             <li><a href="{{route('admin.register')}}">Add a Administrator</a></li>
             <li class="divider"></li>
             <li><a href="{{route('admin.view')}}">View All Administrator </a></li>
@@ -45,51 +45,24 @@
 <br>
 <br>
 <div class="container">
-    <center> <h1> All Students </h1>  </center>
-     <table class="table table-hover">
-        <thead>
+    <center> <h1> All Administrators </h1>  </center>
+      <table class="table table-hover">
+          <thead>
             <tr>
                 <th>ID</th>                              
-                <th>First Name </th>
-                <th>Last Name</th>
-                <th>UWI ID</th>
+                <th>Name</th>              
                 <th>Email</th>
-                <th>Degree</th>
-                <th>Contact</th>
-                <th>Status</th>
+                <th>Date Created</th>
             </tr>
         </thead>
-        <tbody>   
-     @foreach ($students as $student)
+        <tbody>  
+     @foreach ($admin as $admins)
       <tr>
-                <td>{{$student->id}}</td><td>{{$student->firstname}}</td><td>{{$student->lastname}}</td><td>{{$student->UWI_id}}</td><td>{{$student->email}}</td><td>{{$student->degree}}</td><td>{{$student->contact}}</td><td>{{$student->status}}</td>
+                <td>{{$admins->id}}</td><td>{{$admins->name}}</td><td>{{$admins->email}}</td><td>{{$admins->created_at}}</td>
             </tr>    
     @endforeach
         </tbody>
-    </table>
-</div>
-
-<br>
-<br>
-<div class="container">
-    <center> <h1> Messages</h1>  </center>
-     <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Name</th>                              
-                <th>Email </th>
-                <th>Country</th>
-                <th>Message</th>
-            </tr>
-        </thead>
-        <tbody>   
-     @foreach ($messages as $message)
-      <tr>
-                <td>{{$message->id}}</td><td>{{$message->name}}</td><td>{{$message->country}}</td><td>{{$message->email}}</td><td>{{$message->message}}</td>
-            </tr>    
-    @endforeach
-        </tbody>
-    </table>
+</table>
 </div>
 
 @endsection
