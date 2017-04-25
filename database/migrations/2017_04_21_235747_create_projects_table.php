@@ -28,10 +28,6 @@ class CreateProjectsTable extends Migration
             $table->timestamps();
         });
 
-        DB::statement("ALTER TABLE projects MODIFY pic MEDIUMBLOB");
-        Schema::table('projects', function (Blueprint $table) {
-            $table->binary('pic')->nullable()->change();
-        });
     }
 
     /**
