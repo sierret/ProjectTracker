@@ -52,12 +52,11 @@ class ProjectTableSeeder extends Seeder {
     {
         DB::table('projects')->insert([
             'projectName' => 'UWI Sport',
-            'upload' => 'https://app.box.com/s/v87lgj24w43lkv5hgi477xbacp9jpr78',
             'coursename' => 'Web Systems',
             'courseCode' => 'INFO 3410',
              'degree' => 'Information Technology',
             'year' => 2000,
-            'github' => 'https://github.com/akacoombs/StudentProjectTracker',
+            'github' => 'https://github.com/preesytt/ProjectTracker',
             'description' => 'Fake Data to test site functionality ',
             'groupMembers' => 'newuser@user.com person@user.com',
         ]);
